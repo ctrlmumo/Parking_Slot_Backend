@@ -1,8 +1,8 @@
 """
-URL configuration for parking_system project.
+URL configuration for parking project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,24 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Parking Allocation System API",
-        default_version='v1',
-        description="API for parking slot allocation system",
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/accounts/', include('accounts.urls')),
-    #path('api/parking/', include('parking.urls')),
-    #path('api/bookings/', include('bookings.urls')),
-
+    path('api/', include('accounts.urls')),
 ]
